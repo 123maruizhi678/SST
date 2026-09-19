@@ -1,5 +1,6 @@
 from fastapi import APIRouter,Depends
 from dao.order_dao import *
+from schema.order_schema import OrderResponse
 
 orderapi = APIRouter()
 
@@ -10,15 +11,15 @@ def get_orders(data=Depends(select_orders)):
         l.append({'id':i.id,'title':i.title,'userid':i.userid,'create_date':i.create_date,'update_date':i.update_date})
     return l
 
-@orderapi.post('/orders',)
+@orderapi.post('/orders',response_model=OrderResponse)
 def add_order(data=Depends(insert_users)):
-    return {'code':200,'details':'插入成功'}
+    return data
 
 
-@orderapi.put('/orders',)
+@orderapi.put('/orders',response_model=OrderResponse)
 def put_order(data=Depends(update_users)):
-    return {'code':200,'details':'更新成功'}
+    return data
 
-@orderapi.delete('/orders/{id}')
-def delete_order(id=Depends(delete_users)):
-    return {'code':200,'details':'删除成功'}
+@orderapi.delete('/orders')
+def delete_order(data=Depends(delete_users)):
+    return data
