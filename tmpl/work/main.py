@@ -17,7 +17,7 @@
 '''
 
 from fastapi import FastAPI
-from api.order_api import *
+from api.order_api import orderapi
 
 app = FastAPI()
 app.include_router(orderapi,tags=['订单表'])

@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class Order(BaseModel):
+class OrderRequest(BaseModel):
     title:str|None = None
     userid:int|None = None
 

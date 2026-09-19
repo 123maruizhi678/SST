@@ -2,7 +2,7 @@ from sqlalchemy import Integer,String,DATETIME,Column
 from util.database import Base,engine
 from datetime import datetime
 
-class Order_Model(Base):
+class OrderModel(Base):
     __tablename__ = 'order'
     id = Column(Integer,primary_key=True,autoincrement=True)
     title = Column(String(50),nullable=False)

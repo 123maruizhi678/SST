@@ -1,5 +1,5 @@
 from fastapi import APIRouter,Depends
-from dao.order_dao import *
+from dao.order_dao import select_orders,insert_users,update_users,delete_users
 from schema.order_schema import OrderResponse
 
 orderapi = APIRouter()
@@ -14,7 +14,6 @@ def get_orders(data=Depends(select_orders)):
 @orderapi.post('/orders',response_model=OrderResponse)
 def add_order(data=Depends(insert_users)):
     return data
-
 
 @orderapi.put('/orders',response_model=OrderResponse)
 def put_order(data=Depends(update_users)):
